@@ -4,7 +4,7 @@
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Main{
+public class main{
     class Helper extends TimerTask {
 	public static int i = 0;
 	public void run() {
