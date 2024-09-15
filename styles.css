@@ -1,0 +1,49 @@
+.header {
+  background-color: rgb(50, 50, 120);
+}
+
+body {
+  text-align: center;
+}
+.title {
+  color: white;
+  padding-top: 20px;
+  padding-bottom: none;
+  text-align: center;
+  font-size: 200px;
+  font-family: "Alumni sans";
+  background-color: rgb(50, 50, 120);
+  letter-spacing: 2px;
+  text-decoration: solid;
+}
+
+.card-body {
+  margin-bottom: 50px;
+}
+
+.title span {
+  border-bottom: 10px solid white;
+}
+
+.subTitle {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  font-family: "Alumni sans";
+  padding-bottom: 40px;
+  text-decoration: thin;
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+
+.card-title {
+  color: rgb(50, 50, 120);
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 1px;
+  font-size: 75px;
+  padding-bottom: 10px;
+}
+
+div.col {
+  margin-top: 50px;
+}
