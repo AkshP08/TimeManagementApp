@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Login/Signup</title>
+  <link rel="stylesheet" href="loginStyle.css">
+</head>
+
+<body>
+  <h1>JWT Login/Signup</h1>
+
+  <div id="signup">
+    <h2>Signup</h2>
+    <form id="signupForm">
+      <input type="text" id="signupUsername" placeholder="Username" required />
+      <input type="password" id="signupPassword" placeholder="Password" required />
+      <button type="submit">Signup</button>
+    </form>
+    <div id="signupMessage"></div>
+  </div>
+
+  <div id="login">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="loginUsername" placeholder="Username" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+    <div id="loginMessage"></div>
+  </div>
+
+  <div id="protected">
+    <h2>Protected Route</h2>
+    <button id="accessProtected">Access Protected Route</button>
+    <div id="protectedMessage"></div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+
+</html>

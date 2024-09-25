@@ -38,10 +38,15 @@ body {
 
 .card-title {
   color: rgb(50, 50, 120);
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+  font-family: "Alumni sans";
   letter-spacing: 1px;
-  font-size: 75px;
-  padding-bottom: 10px;
+  font-size: 100px;
+  padding-bottom: 15px;
+}
+
+.card-text {
+  padding-bottom: 15px;
 }
 
 div.col {

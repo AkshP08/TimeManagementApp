@@ -1,0 +1,178 @@
+// import java.util.concurrent.TimeUnit;
+
+// public class main {
+
+//     public static int toMinutes(int s) {
+//         double minutes = (double) s / 60;
+//         return (int) minutes;
+//     }
+
+//     public static int toSeconds(int s) {
+//         return s % 60;
+//     }
+
+//     public static void countDown(int time) throws InterruptedException {
+//         for(int i = time; i > 0; i--){
+//             TimeUnit.SECONDS.sleep(1);
+//             if (toMinutes(i) < 10 || toSeconds(i) < 10) {
+//                 if (toMinutes(i) < 10 && toSeconds(i) < 10) {
+//                     System.out.println("0" + toMinutes(i) + ":" + "0" + toSeconds(i));
+//                 } else if (toMinutes(i) < 10 && !(toSeconds(i) < 10)) {
+//                     System.out.println("0" + toMinutes(i) + ":" + toSeconds(i));
+//                 } else if (!(toMinutes(i) < 10) && toSeconds(i) < 10) {
+//                     System.out.println(toMinutes(i) + ":" + "0" + toSeconds(i));
+//                 }
+//             } else {
+//                 System.out.println(toMinutes(i) + ":" + toSeconds(i));
+//             }
+//         }
+//     }
+
+//     public static void stopwatch(int time) throws InterruptedException {
+//         for (int i = 0; i < time; i++) {
+//             TimeUnit.SECONDS.sleep(1);
+//             if (toMinutes(i) < 10 || toSeconds(i) < 10) {
+//                 if (toMinutes(i) < 10 && toSeconds(i) < 10) {
+//                     System.out.println("0" + toMinutes(i) + ":" + "0" + toSeconds(i));
+//                 } else if (toMinutes(i) < 10 && !(toSeconds(i) < 10)) {
+//                     System.out.println("0" + toMinutes(i) + ":" + toSeconds(i));
+//                 } else if (!(toMinutes(i) < 10) && toSeconds(i) < 10) {
+//                     System.out.println(toMinutes(i) + ":" + "0" + toSeconds(i));
+//                 }
+//             } else {
+//                 System.out.println(toMinutes(i) + ":" + toSeconds(i));
+//             }
+//         }
+//     }
+
+//     public static void main(String[] args) throws InterruptedException {
+//         countDown(60);
+
+//         stopwatch(60);
+//     }
+// }
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
+
+public class TimerApp extends JFrame {
+    private JTextField minuteInput;
+    private JTextField secondInput;
+    private JButton startButton;
+    private JButton stopButton;
+    private JRadioButton countdownButton;
+    private JRadioButton stopwatchButton;
+    private JTextArea displayArea;
+    private Thread timerThread;
+    private volatile boolean running;
+
+    public TimerApp() {
+        setTitle("Countdown/Stopwatch Timer");
+        setSize(300, 250);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        minuteInput = new JTextField(5);
+        secondInput = new JTextField(5);
+        startButton = new JButton("Start");
+        stopButton = new JButton("Stop");
+        countdownButton = new JRadioButton("Countdown");
+        stopwatchButton = new JRadioButton("Stopwatch");
+        displayArea = new JTextArea(5, 20);
+        displayArea.setEditable(false);
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(countdownButton);
+        group.add(stopwatchButton);
+        countdownButton.setSelected(true);
+
+        add(new JLabel("Minutes:"));
+        add(minuteInput);
+        add(new JLabel("Seconds:"));
+        add(secondInput);
+        add(countdownButton);
+        add(stopwatchButton);
+        add(startButton);
+        add(stopButton);
+        add(new JScrollPane(displayArea));
+
+        startButton.addActionListener(new StartButtonListener());
+        stopButton.addActionListener(new StopButtonListener());
+
+        setVisible(true);
+    }
+
+    private class StartButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (running) {
+                return; // Prevent starting if already running
+            }
+
+            int minutes = Integer.parseInt(minuteInput.getText());
+            int seconds = Integer.parseInt(secondInput.getText());
+            int totalTime = minutes * 60 + seconds;
+
+            running = true;
+            displayArea.setText(""); // Clear previous output
+
+            timerThread = new Thread(() -> {
+                try {
+                    if (countdownButton.isSelected()) {
+                        countDown(totalTime);
+                    } else {
+                        stopwatch(totalTime);
+                    }
+                } catch (InterruptedException ex) {
+                    // Handle interrupt if needed
+                }
+            });
+            timerThread.start();
+        }
+    }
+
+    private class StopButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            running = false; // Stop the timer
+            if (timerThread != null) {
+                timerThread.interrupt();
+            }
+            displayArea.append("Timer stopped.\n");
+        }
+    }
+
+    private void countDown(int time) throws InterruptedException {
+        for (int i = time; i > 0 && running; i--) {
+            TimeUnit.SECONDS.sleep(1);
+            displayArea.append(formatTime(i) + "\n");
+        }
+        if (running) {
+            displayArea.append("Countdown finished!\n");
+        }
+        running = false; // Reset running flag
+    }
+
+    private void stopwatch(int time) throws InterruptedException {
+        for (int i = 0; i < time && running; i++) {
+            TimeUnit.SECONDS.sleep(1);
+            displayArea.append(formatTime(i) + "\n");
+        }
+        if (running) {
+            displayArea.append("Stopwatch finished!\n");
+        }
+        running = false; // Reset running flag
+    }
+
+    private String formatTime(int totalSeconds) {
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format("%02d:%02d", minutes, seconds);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.in
+    }
+}

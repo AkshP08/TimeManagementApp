@@ -1,0 +1,147 @@
+body {
+  background-color: white;
+}
+#newTask {
+  margin-top: 10px;
+  padding-left: 12px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 18px;
+  font-size: 30px;
+  font-family: "Alumni sans";
+  color: rgb(50, 50, 120);
+}
+
+#newTime {
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-color: transparent;
+  border-radius: 8px;
+}
+
+#inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#addTask {
+  padding-left: 10px;
+  padding-right: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+  border-radius: 18px;
+  /* background-color: rgb(31, 224, 192); */
+  background-color: rgb(215, 215, 250);
+  color: rgb(50, 50, 120);
+  height: 50px;
+  width: 50px;
+  border: none;
+  font-size: 25px;
+  font-family: "Alumni sans";
+  letter-spacing: 1px;
+}
+#addTask:hover {
+  background-color: rgb(29, 29, 65);
+  color: white;
+}
+
+#inputArea {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+}
+#taskContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgb(50, 50, 120);
+  border-radius: 24px;
+  height: fit-content;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tasks {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: azure;
+  border-radius: 10px;
+  height: max-content;
+  width: 300px;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+}
+
+.tasks .task h1 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 15px;
+}
+#textArea {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  width: 110px;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.DeleteButton {
+  border: none;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0);
+  font-weight: bold;
+  font-size: 30px;
+  position: absolute;
+  margin-bottom: 15px;
+  right: 42%;
+}
+.DeleteButton:hover {
+  font-size: 35px;
+  margin: 2.5px;
+  margin-bottom: 20px;
+}
+.CheckButton {
+  background-color: azure;
+  border: none;
+  font-size: 40px;
+  position: absolute;
+  right: 45%;
+}
+.CheckButton:hover span {
+  display: none;
+}
+
+.CheckButton:hover:before {
+  content: "☑";
+  right: 42%;
+}
+header {
+  color: rgb(50, 50, 120);
+  font-family: "Alumni sans";
+  font-size: 100px;
+  text-align: center;
+}
+
+b {
+  font-family: "Alumni sans";
+}
+
+.newTask {
+  font-family: "Alumni sans";
+}
+
+#TaskBar {
+  width: 20%;
+  position: absolute;
+}
